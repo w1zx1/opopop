@@ -1,0 +1,28 @@
+[package]
+name = "opopop"
+version = "0.1.0"
+edition = "2021"
+description = "Fullscreen video kiosk: plays an embedded video and blocks all input except Ctrl+Shift+Esc"
+
+[dependencies]
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_Media_MediaFoundation",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Variant",
+    "Win32_System_Power",
+    "Win32_System_Threading",
+    "Win32_Graphics_Gdi",
+    "Win32_UI_HiDpi",
+] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
